@@ -1,0 +1,78 @@
+@model GameJordan.Models.Category
+
+@{
+    ViewData["Title"] = "تفاصيل التصنيف";
+}
+
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-title-wrapper">
+            <div class="page-icon">
+                <i class="bi bi-eye-fill"></i>
+            </div>
+            <div>
+                <h1 class="page-title">تفاصيل التصنيف</h1>
+                <p class="page-subtitle">عرض المعلومات الكاملة للتصنيف</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Card -->
+    <div class="details-card">
+        <div class="details-header">
+            <div class="details-icon">
+                <i class="bi bi-bookmark-fill"></i>
+            </div>
+            <h2 class="details-title">@Model.Name</h2>
+            <p class="details-subtitle">معلومات التصنيف الكاملة</p>
+        </div>
+
+        <div class="details-body">
+            <!-- ID -->
+            <div class="detail-row">
+                <div class="detail-row-icon">
+                    <i class="bi bi-hash"></i>
+                </div>
+                <div class="detail-row-content">
+                    <span class="detail-row-label">رقم التعريف (ID)</span>
+                    <span class="detail-row-value">@Model.Id</span>
+                </div>
+            </div>
+
+            <!-- Name -->
+            <div class="detail-row">
+                <div class="detail-row-icon">
+                    <i class="bi bi-tag-fill"></i>
+                </div>
+                <div class="detail-row-content">
+                    <span class="detail-row-label">اسم التصنيف</span>
+                    <span class="detail-row-value">@Model.Name</span>
+                </div>
+            </div>
+
+            <!-- DisplayOrder -->
+            <div class="detail-row">
+                <div class="detail-row-icon">
+                    <i class="bi bi-sort-down"></i>
+                </div>
+                <div class="detail-row-content">
+                    <span class="detail-row-label">ترتيب العرض</span>
+                    <span class="detail-row-value">@Model.DisplayOrder</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="details-actions">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-submit">
+                <i class="bi bi-pencil-fill"></i>
+                تعديل
+            </a>
+            <a asp-action="Index" class="btn-back">
+                <i class="bi bi-arrow-right"></i>
+                العودة للقائمة
+            </a>
+        </div>
+    </div>
+</div>

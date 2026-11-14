@@ -1,0 +1,84 @@
+@model GameJordan.Models.Category
+
+@{
+    ViewData["Title"] = "إضافة تصنيف جديد";
+}
+
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-title-wrapper">
+            <div class="page-icon">
+                <i class="bi bi-plus-circle-fill"></i>
+            </div>
+            <div>
+                <h1 class="page-title">إضافة تصنيف جديد</h1>
+                <p class="page-subtitle">أنشئ تصنيفاً جديداً لتنظيم ألعابك</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Messages -->
+    @if (ViewBag.Success != null)
+    {
+        <div class="alert alert-success">
+            <i class="bi bi-check-circle-fill"></i>
+            <div>@ViewBag.Success</div>
+        </div>
+    }
+
+    <!-- Form Card -->
+    <div class="form-card">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Name Field -->
+            <div class="form-floating">
+                <input asp-for="Name" class="form-control" id="floatingName" placeholder="اسم التصنيف" />
+                <label for="floatingName">
+                    <i class="bi bi-tag-fill"></i>
+                    اسم التصنيف
+                </label>
+                <span asp-validation-for="Name" class="invalid-feedback"></span>
+                <div class="form-text">
+                    <i class="bi bi-info-circle"></i>
+                    أدخل اسماً واضحاً ومميزاً للتصنيف
+                </div>
+            </div>
+
+            <!-- DisplayOrder Field -->
+            <div class="form-floating">
+                <input asp-for="DisplayOrder" class="form-control" id="floatingOrder" placeholder="ترتيب العرض" type="number" min="0" />
+                <label for="floatingOrder">
+                    <i class="bi bi-sort-down"></i>
+                    ترتيب العرض
+                </label>
+                <span asp-validation-for="DisplayOrder" class="invalid-feedback"></span>
+                <div class="form-text">
+                    <i class="bi bi-info-circle"></i>
+                    الرقم الأصغر يظهر أولاً في القائمة
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="bi bi-check-circle-fill"></i>
+                    حفظ التصنيف
+                </button>
+                <a asp-action="Index" class="btn-back">
+                    <i class="bi bi-arrow-right"></i>
+                    العودة للقائمة
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

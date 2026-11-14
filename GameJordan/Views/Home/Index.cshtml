@@ -2,7 +2,254 @@
     ViewData["Title"] = "الصفحة الرئيسية";
 }
 
-<div class="text-center">
-    <h1 class="display-4">مرحبا</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">بناء برنامج ويب مع  asp.net core</a>.</p>
-</div>
+<!-- Hero Section -->
+<section class="hero-section text-center py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto">
+                <div class="hero-badge mb-3">
+                    <i class="bi bi-controller"></i>
+                    <span>منصة الألعاب الأولى في الأردن</span>
+                </div>
+                <h1 class="display-3 fw-bold mb-4">
+                    مرحباً بك في <span class="gradient-text">GameJordan</span>
+                </h1>
+                <p class="lead mb-4">
+                    اكتشف عالم الألعاب المثير! تصفح أحدث الألعاب، تابع التصنيفات، وانضم إلى مجتمع اللاعبين الأردنيين
+                </p>
+                <div class="hero-buttons">
+                    <a asp-controller="Category" asp-action="Index" class="btn btn-primary-custom btn-lg me-2">
+                        <i class="bi bi-grid-fill"></i> تصفح التصنيفات
+                    </a>
+                    <a href="#features" class="btn btn-outline-custom btn-lg">
+                        <i class="bi bi-info-circle"></i> اعرف المزيد
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section py-4 mb-5">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <i class="bi bi-joystick"></i>
+                    <h3 class="stat-number">500+</h3>
+                    <p class="stat-label">لعبة متاحة</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <i class="bi bi-tags-fill"></i>
+                    <h3 class="stat-number">25+</h3>
+                    <p class="stat-label">تصنيف مختلف</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <i class="bi bi-people-fill"></i>
+                    <h3 class="stat-number">10K+</h3>
+                    <p class="stat-label">لاعب نشط</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <i class="bi bi-star-fill"></i>
+                    <h3 class="stat-number">4.9</h3>
+                    <p class="stat-label">تقييم المستخدمين</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section py-5 mb-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title">لماذا GameJordan؟</h2>
+            <p class="section-subtitle">نقدم لك تجربة ألعاب فريدة ومتكاملة</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+                    <h4>أحدث الألعاب</h4>
+                    <p>نوفر لك أحدث الإصدارات والألعاب الرائجة فور صدورها في السوق العالمي</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h4>آمن وموثوق</h4>
+                    <p>جميع الألعاب أصلية ومرخصة، مع ضمان الجودة والأمان الكامل لمستخدمينا</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <h4>دعم متواصل</h4>
+                    <p>فريق دعم فني متخصص متاح على مدار الساعة لمساعدتك في أي استفسار</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-cash-coin"></i>
+                    </div>
+                    <h4>أسعار منافسة</h4>
+                    <p>أفضل الأسعار في السوق الأردني مع عروض وخصومات حصرية بشكل مستمر</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <h4>توصيل سريع</h4>
+                    <p>خدمة توصيل سريعة لجميع محافظات المملكة خلال 24-48 ساعة</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-trophy-fill"></i>
+                    </div>
+                    <h4>بطولات وجوائز</h4>
+                    <p>شارك في بطولاتنا الشهرية واربح جوائز قيمة وكؤوس مميزة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Categories Section -->
+<section class="categories-section py-5 mb-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title">التصنيفات الشائعة</h2>
+            <p class="section-subtitle">اختر نوع الألعاب المفضل لديك</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card">
+                    <div class="category-icon action">
+                        <i class="bi bi-crosshair"></i>
+                    </div>
+                    <h5>أكشن</h5>
+                    <span class="category-count">120 لعبة</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card">
+                    <div class="category-icon adventure">
+                        <i class="bi bi-compass"></i>
+                    </div>
+                    <h5>مغامرات</h5>
+                    <span class="category-count">85 لعبة</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card">
+                    <div class="category-icon sports">
+                        <i class="bi bi-controller"></i>
+                    </div>
+                    <h5>رياضة</h5>
+                    <span class="category-count">65 لعبة</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card">
+                    <div class="category-icon racing">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+                    <h5>سباقات</h5>
+                    <span class="category-count">45 لعبة</span>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a asp-controller="Category" asp-action="Index" class="btn btn-primary-custom btn-lg">
+                عرض جميع التصنيفات <i class="bi bi-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box">
+            <!-- Floating Icons Background -->
+            <div class="cta-bg-icons">
+                <i class="bi bi-trophy-fill"></i>
+                <i class="bi bi-controller"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-joystick"></i>
+            </div>
+
+            <!-- Content -->
+            <div class="cta-content">
+                <div class="cta-badge">
+                    <i class="bi bi-rocket-takeoff-fill"></i>
+                    <span>ابدأ رحلتك الآن</span>
+                </div>
+
+                <h2 class="cta-title">
+                    جاهز لبدء <span class="gradient-text">المغامرة؟</span>
+                </h2>
+
+                <p class="cta-description">
+                    انضم إلى آلاف اللاعبين واستمتع بأفضل تجربة ألعاب في الأردن
+                </p>
+
+                <div class="cta-buttons">
+                    <a asp-controller="Category" asp-action="Index" class="btn-cta-primary">
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+                        <span>ابدأ الآن</span>
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                    <a asp-controller="Home" asp-action="Privacy" class="btn-cta-secondary">
+                        <i class="bi bi-info-circle"></i>
+                        <span>اعرف المزيد</span>
+                    </a>
+                </div>
+
+                <div class="cta-stats">
+                    <div class="cta-stat">
+                        <i class="bi bi-people-fill"></i>
+                        <div>
+                            <strong>10K+</strong>
+                            <span>لاعب نشط</span>
+                        </div>
+                    </div>
+                    <div class="cta-stat-divider"></div>
+                    <div class="cta-stat">
+                        <i class="bi bi-controller"></i>
+                        <div>
+                            <strong>500+</strong>
+                            <span>لعبة متاحة</span>
+                        </div>
+                    </div>
+                    <div class="cta-stat-divider"></div>
+                    <div class="cta-stat">
+                        <i class="bi bi-star-fill"></i>
+                        <div>
+                            <strong>4.9</strong>
+                            <span>تقييم المستخدمين</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,244 @@
+@using GameJordan.Models
+@model List<Category>
+
+@{
+    ViewData["Title"] = "التصنيفات";
+}
+
+<div class="categories-page py-4">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header mb-5">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-title-wrapper">
+                        <div class="page-icon">
+                            <i class="bi bi-grid-fill"></i>
+                        </div>
+                        <div>
+                            <h1 class="page-title">إدارة التصنيفات</h1>
+                            <p class="page-subtitle">تنظيم وإدارة تصنيفات الألعاب في المنصة</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a asp-action="Create" class="btn btn-create">
+                        <i class="bi bi-plus-circle-fill"></i>
+                        إضافة تصنيف جديد
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar mb-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <i class="bi bi-collection-fill"></i>
+                        <div>
+                            <span class="stat-value">@Model.Count</span>
+                            <span class="stat-label">إجمالي التصنيفات</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <i class="bi bi-sort-down"></i>
+                        <div>
+                            <span class="stat-value">
+                                @(Model.Any() ? Model.Min(c => c.DisplayOrder) : 0)
+                            </span>
+                            <span class="stat-label">أول ترتيب</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <i class="bi bi-sort-up"></i>
+                        <div>
+                            <span class="stat-value">
+                                @(Model.Any() ? Model.Max(c => c.DisplayOrder) : 0)
+                            </span>
+                            <span class="stat-label">آخر ترتيب</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="filter-bar mb-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" id="searchInput" class="form-control" placeholder="ابحث عن تصنيف...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="sortSelect">
+                        <option value="order">ترتيب العرض</option>
+                        <option value="name">الاسم (أ - ي)</option>
+                        <option value="name-desc">الاسم (ي - أ)</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-reset w-100" id="resetBtn">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        إعادة تعيين
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Grid -->
+        @if (Model != null && Model.Any())
+        {
+            <div class="row g-4" id="categoriesGrid">
+                @foreach (var category in Model)
+                {
+                    <div class="col-lg-4 col-md-6 category-item"
+                         data-name="@category.Name.ToLower()"
+                         data-order="@category.DisplayOrder">
+                        <div class="category-card">
+                            <!-- Card Header -->
+                            <div class="card-header-custom">
+                                <div class="category-number">
+                                    <span>#@category.DisplayOrder</span>
+                                </div>
+                                <div class="category-actions-dropdown">
+                                    <button class="btn-action-menu" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <a class="dropdown-item" asp-action="Details" asp-route-id="@category.Id">
+                                                <i class="bi bi-eye-fill text-info"></i>
+                                                <span>التفاصيل</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-action="Edit" asp-route-id="@category.Id">
+                                                <i class="bi bi-pencil-fill text-warning"></i>
+                                                <span>تعديل</span>
+                                            </a>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@category.Id">
+                                                <i class="bi bi-trash-fill"></i>
+                                                <span>حذف</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body-custom">
+                                <div class="category-icon-wrapper">
+                                    <i class="bi bi-bookmark-fill"></i>
+                                </div>
+                                <h3 class="category-name">@category.Name</h3>
+                                <div class="category-meta">
+                                    <div class="meta-item">
+                                        <i class="bi bi-list-ol"></i>
+                                        <span>ترتيب العرض</span>
+                                        <strong>@category.DisplayOrder</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Footer -->
+                            <div class="card-footer-custom">
+                                <a asp-action="Details" asp-route-id="@category.Id" class="action-btn btn-details">
+                                    <i class="bi bi-eye-fill"></i>
+                                    <span>التفاصيل</span>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@category.Id" class="action-btn btn-edit">
+                                    <i class="bi bi-pencil-fill"></i>
+                                    <span>تعديل</span>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@category.Id" class="action-btn btn-delete">
+                                    <i class="bi bi-trash-fill"></i>
+                                    <span>حذف</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <!-- Empty State -->
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="bi bi-inbox"></i>
+                </div>
+                <h3>لا توجد تصنيفات حالياً</h3>
+                <p>ابدأ بإضافة أول تصنيف لتنظيم ألعابك</p>
+                <a asp-action="Create" class="btn btn-create">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    إضافة تصنيف جديد
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.category-item');
+
+            items.forEach(item => {
+                const name = item.getAttribute('data-name');
+                if (name.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Sort functionality
+        document.getElementById('sortSelect').addEventListener('change', function(e) {
+            const sortBy = e.target.value;
+            const grid = document.getElementById('categoriesGrid');
+            const items = Array.from(document.querySelectorAll('.category-item'));
+
+            items.sort((a, b) => {
+                if (sortBy === 'order') {
+                    return parseInt(a.getAttribute('data-order')) - parseInt(b.getAttribute('data-order'));
+                } else if (sortBy === 'name') {
+                    return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'), 'ar');
+                } else if (sortBy === 'name-desc') {
+                    return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name'), 'ar');
+                }
+            });
+
+            items.forEach(item => grid.appendChild(item));
+        });
+
+        // Reset functionality
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('sortSelect').value = 'order';
+
+            const items = document.querySelectorAll('.category-item');
+            items.forEach(item => item.style.display = '');
+
+            const grid = document.getElementById('categoriesGrid');
+            const sortedItems = Array.from(items).sort((a, b) =>
+                parseInt(a.getAttribute('data-order')) - parseInt(b.getAttribute('data-order'))
+            );
+            sortedItems.forEach(item => grid.appendChild(item));
+        });
+    </script>
+}
